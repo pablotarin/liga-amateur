@@ -1,0 +1,13 @@
+teamId,name,city,foundedYear,stadium,colorPrimary,colorSecondary,coachName
+T001,Deportivo Halcones,Gandia,1956,Campo Municipal de Gandia,#0F172A,#FFFFFF,Nuria Martinez
+T002,CF Leones,Valencia,1970,Campo Municipal de Valencia,#B91C1C,#FFFFFF,Sergio Martinez
+T003,Union Tiburones,Alicante,2002,Campo Municipal de Alicante,#1E3A8A,#FFFFFF,Marina Domingo
+T004,Deportivo Aguilas,Castellon,1992,Campo Municipal de Castellon,#78350F,#FFFFFF,Marina Alvarez
+T005,Atletico Toros,Sagunto,1956,Campo Municipal de Sagunto,#1E3A8A,#FFFFFF,Victor Torres
+T006,Real Lobos,Xativa,1969,Campo Municipal de Xativa,#4C1D95,#FFFFFF,Laura Navarro
+T007,Atletico Panteras,Denia,1990,Campo Municipal de Denia,#B91C1C,#FFFFFF,Toni Moreno
+T008,SC Dragones,Elche,1969,Campo Municipal de Elche,#78350F,#FFFFFF,Nuria Ruiz
+T009,CF Titanes,Cullera,2006,Campo Municipal de Cullera,#1E3A8A,#FFFFFF,Pau Moreno
+T010,Union Centauros,Ontinyent,1999,Campo Municipal de Ontinyent,#78350F,#FFFFFF,Carla Domingo
+T011,CD Vikingos,Requena,1972,Campo Municipal de Requena,#B91C1C,#FFFFFF,Julia Domingo
+T012,Real Cobras,Paterna,2003,Campo Municipal de Paterna,#065F46,#FFFFFF,Marina Alvarez

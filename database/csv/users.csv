@@ -1,0 +1,14 @@
+userId,name,email,password,role,teamId
+U0001,Admin Liga,admin@ligaamateur.com,Admin123!,admin,
+U0002,Nuria Martinez,nuria.martinez0@ligaamateur.com,Manager123!,manager,T001
+U0003,Sergio Martinez,sergio.martinez1@ligaamateur.com,Manager123!,manager,T002
+U0004,Marina Domingo,marina.domingo2@ligaamateur.com,Manager123!,manager,T003
+U0005,Marina Alvarez,marina.alvarez3@ligaamateur.com,Manager123!,manager,T004
+U0006,Victor Torres,victor.torres4@ligaamateur.com,Manager123!,manager,T005
+U0007,Laura Navarro,laura.navarro5@ligaamateur.com,Manager123!,manager,T006
+U0008,Toni Moreno,toni.moreno6@ligaamateur.com,Manager123!,manager,T007
+U0009,Nuria Ruiz,nuria.ruiz7@ligaamateur.com,Manager123!,manager,T008
+U0010,Pau Moreno,pau.moreno8@ligaamateur.com,Manager123!,manager,T009
+U0011,Carla Domingo,carla.domingo9@ligaamateur.com,Manager123!,manager,T010
+U0012,Julia Domingo,julia.domingo10@ligaamateur.com,Manager123!,manager,T011
+U0013,Marina Alvarez,marina.alvarez11@ligaamateur.com,Manager123!,manager,T012

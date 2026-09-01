@@ -1,0 +1,59 @@
+.match-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.match-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.match-card__teams {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.match-card__team {
+  display: flex;
+}
+
+.match-card__team--away {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.match-card__team-name {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.match-card__score {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+  min-width: 64px;
+  text-align: center;
+}
+
+.match-card__vs {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.match-card__footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-3);
+}

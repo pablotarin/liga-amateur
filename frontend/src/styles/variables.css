@@ -1,0 +1,71 @@
+/*
+  Design tokens de la aplicacion. TODO color, espaciado, tipografia, radio de borde
+  y sombra usado en el resto de la app pasa por aqui: cambiar el "look & feel" del
+  proyecto entero se reduce a tocar este fichero.
+*/
+:root {
+  /* --- Color: identidad de marca --- */
+  --color-primary: #1e3a8a;       /* azul liga - cabeceras, botones principales */
+  --color-primary-dark: #142a63;
+  --color-primary-light: #3b5bc4;
+  --color-accent: #f59e0b;        /* naranja - CTAs secundarios, resaltados (goles, MVP...) */
+  --color-accent-dark: #b45309;
+
+  /* --- Color: estado/semantica --- */
+  --color-success: #16a34a;       /* victorias, confirmaciones */
+  --color-danger: #dc2626;        /* derrotas, tarjetas rojas, errores */
+  --color-warning: #eab308;       /* tarjetas amarillas, avisos */
+  --color-info: #0284c7;
+
+  /* --- Color: neutros / superficie --- */
+  --color-bg: #f5f6fa;
+  --color-surface: #ffffff;
+  --color-surface-alt: #eef1f8;
+  --color-border: #e2e5ee;
+  --color-text: #1a1d29;
+  --color-text-muted: #6b7280;
+  --color-text-inverse: #ffffff;
+
+  /* --- Tipografia --- */
+  --font-family-base: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-family-heading: "Poppins", "Inter", system-ui, sans-serif;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.375rem;
+  --font-size-xl: 1.75rem;
+  --font-size-2xl: 2.25rem;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* --- Espaciado (escala de 4px) --- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* --- Radios y sombras --- */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 14px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.12);
+
+  /* --- Layout --- */
+  --container-max-width: 1180px;
+  --navbar-height: 68px;
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}
