@@ -2,6 +2,18 @@ import asyncHandler from "express-async-handler";
 import Team from "../models/Team.js";
 import { isCloudinaryConfigured } from "../config/cloudinary.js";
 import uploadBufferToCloudinary from "../utils/cloudinaryUpload.js";
+import pickFields from "../utils/pickFields.js";
+
+const TEAM_EDITABLE_FIELDS = [
+  "name",
+  "city",
+  "foundedYear",
+  "stadium",
+  "colorPrimary",
+  "colorSecondary",
+  "coachName",
+];
+const TEAM_ADMIN_FIELDS = [...TEAM_EDITABLE_FIELDS, "manager"];
 
 // @desc    Listar todos los equipos
 // @route   GET /api/teams
@@ -31,7 +43,7 @@ export const getTeamById = asyncHandler(async (req, res) => {
 // @route   POST /api/teams
 // @access  Privado (admin)
 export const createTeam = asyncHandler(async (req, res) => {
-  const team = await Team.create(req.body);
+  const team = await Team.create(pickFields(req.body, TEAM_ADMIN_FIELDS));
   res.status(201).json(team);
 });
 
@@ -51,7 +63,8 @@ export const updateTeam = asyncHandler(async (req, res) => {
     throw new Error("Solo puedes editar la informacion de tu propio equipo");
   }
 
-  Object.assign(team, req.body);
+  const allowed = req.user.role === "admin" ? TEAM_ADMIN_FIELDS : TEAM_EDITABLE_FIELDS;
+  Object.assign(team, pickFields(req.body, allowed));
   const updated = await team.save();
   res.json(updated);
 });

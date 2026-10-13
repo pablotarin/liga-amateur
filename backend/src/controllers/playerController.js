@@ -2,6 +2,10 @@ import asyncHandler from "express-async-handler";
 import Player from "../models/Player.js";
 import { isCloudinaryConfigured } from "../config/cloudinary.js";
 import uploadBufferToCloudinary from "../utils/cloudinaryUpload.js";
+import pickFields from "../utils/pickFields.js";
+
+const PLAYER_EDITABLE_FIELDS = ["name", "position", "dorsal", "birthdate", "nationality", "stats"];
+const PLAYER_ADMIN_FIELDS = [...PLAYER_EDITABLE_FIELDS, "team"];
 
 // @desc    Listar jugadores (admite filtros ?team=&position=&search=)
 // @route   GET /api/players
@@ -39,7 +43,7 @@ export const createPlayer = asyncHandler(async (req, res) => {
     res.status(403);
     throw new Error("Solo puedes añadir jugadores a tu propio equipo");
   }
-  const player = await Player.create(req.body);
+  const player = await Player.create(pickFields(req.body, PLAYER_ADMIN_FIELDS));
   res.status(201).json(player);
 });
 
@@ -58,7 +62,8 @@ export const updatePlayer = asyncHandler(async (req, res) => {
     throw new Error("Solo puedes editar jugadores de tu propio equipo");
   }
 
-  Object.assign(player, req.body);
+  const allowed = req.user.role === "admin" ? PLAYER_ADMIN_FIELDS : PLAYER_EDITABLE_FIELDS;
+  Object.assign(player, pickFields(req.body, allowed));
   const updated = await player.save();
   res.json(updated);
 });

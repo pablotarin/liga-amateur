@@ -211,12 +211,37 @@ También puedes registrarte libremente desde `/registro`: los usuarios que se re
 
 ## 8. Despliegue
 
-El proyecto está preparado para desplegarse como dos servicios independientes:
+### 8.1 Enlaces del proyecto desplegado
 
-- **Backend** → [Render](https://render.com) / [Railway](https://railway.app): Build command `npm install`, Start command `npm start`, variables de entorno igual que en `.env.example` (usa MongoDB Atlas como `MONGO_URI`).
-- **Frontend** → [Vercel](https://vercel.com) / [Netlify](https://netlify.com): Build command `npm run build`, carpeta de salida `dist`, variable de entorno `VITE_API_URL` apuntando a la URL pública del backend desplegado.
+| Servicio | URL |
+|---|---|
+| Frontend (Vercel) | https://liga-amateur-jet.vercel.app/ |
+| Backend / API (Render) | https://liga-amateur-api.onrender.com/api |
 
-Recuerda actualizar `CLIENT_URL` en el backend con la URL final del frontend para que CORS no bloquee las peticiones.
+Cuenta de prueba (admin): `admin@ligaamateur.com` / `Admin123!`
+
+> Nota: el backend en el plan gratuito de Render se "duerme" tras unos minutos sin tráfico, así que la primera petición puede tardar ~30-50 segundos en responder.
+
+### 8.2 Cómo se ha desplegado
+
+El proyecto son dos servicios independientes que se conectan por variables de entorno.
+
+**1. Base de datos — MongoDB Atlas**
+- Clúster gratuito (M0), usuario de base de datos y, en *Network Access*, la IP `0.0.0.0/0` (Render usa IPs dinámicas).
+- La URI debe llevar el nombre de la base de datos: `mongodb+srv://usuario:password@cluster.xxxxx.mongodb.net/liga-amateur?retryWrites=true&w=majority`
+- La semilla se ejecuta **una vez desde local** apuntando a esa misma URI (`npm run seed`).
+
+**2. Backend — Render (Web Service)**
+- *Root Directory*: `backend` · *Build Command*: `npm install` · *Start Command*: `npm start`
+- Variables de entorno: `MONGO_URI`, `JWT_SECRET`, `JWT_EXPIRES_IN`, `NODE_ENV=production`, `CLIENT_URL` (URL del frontend, **sin barra final**) y, opcionalmente, las tres de Cloudinary.
+- Comprobación: abrir `https://<tu-backend>.onrender.com/api/teams` debe devolver el JSON de equipos.
+
+**3. Frontend — Vercel**
+- *Root Directory*: `frontend` · Framework: Vite · *Build Command*: `npm run build` · *Output*: `dist`
+- Variable de entorno: `VITE_API_URL=https://<tu-backend>.onrender.com/api`
+- `frontend/vercel.json` redirige todas las rutas a `index.html`, necesario para que React Router funcione al recargar la página en rutas como `/equipos`.
+
+**4. Cerrar el círculo**: volver a Render y poner en `CLIENT_URL` la URL definitiva de Vercel (si no, CORS bloqueará las peticiones del navegador).
 
 ---
 

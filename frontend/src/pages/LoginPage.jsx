@@ -67,7 +67,7 @@ export default function LoginPage() {
           </p>
 
           <div className="auth-demo">
-            <strong>Cuentas de prueba (tras ejecutar la semilla):</strong>
+            <strong>Cuentas de prueba:</strong>
             <span>admin@ligaamateur.com / Admin123!</span>
             <span>Managers: ver database/csv/users.csv (contraseña Manager123!)</span>
           </div>

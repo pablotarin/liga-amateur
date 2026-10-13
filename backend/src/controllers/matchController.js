@@ -1,6 +1,18 @@
 import asyncHandler from "express-async-handler";
 import Match from "../models/Match.js";
 import Team from "../models/Team.js";
+import pickFields from "../utils/pickFields.js";
+
+const MATCH_FIELDS = [
+  "jornada",
+  "date",
+  "homeTeam",
+  "awayTeam",
+  "venue",
+  "homeScore",
+  "awayScore",
+  "status",
+];
 
 // @desc    Listar partidos (admite filtros ?team=&jornada=&status=)
 // @route   GET /api/matches
@@ -37,7 +49,7 @@ export const getMatchById = asyncHandler(async (req, res) => {
 // @route   POST /api/matches
 // @access  Privado (admin)
 export const createMatch = asyncHandler(async (req, res) => {
-  const match = await Match.create(req.body);
+  const match = await Match.create(pickFields(req.body, MATCH_FIELDS));
   res.status(201).json(match);
 });
 
@@ -50,7 +62,7 @@ export const updateMatch = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Partido no encontrado");
   }
-  Object.assign(match, req.body);
+  Object.assign(match, pickFields(req.body, MATCH_FIELDS));
   const updated = await match.save();
   res.json(updated);
 });
